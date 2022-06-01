@@ -14,7 +14,7 @@ const mongoose = require('mongoose')
 
 
 
-mongoose.connect("mongodb+srv://monty-python:SnYUEY4giV9rekw@functionup-backend-coho.0zpfv.mongodb.net/Hercules_group11?retryWrites=true&w=majority", { useNewUrlParser: true })
+mongoose.connect("mongodb+srv://AartiZare:aartizare@cluster0.l0uzu.mongodb.net/Suraj-Db?retryWrites=true&w=majority", { useNewUrlParser: true })
     .then(() => console.log('mongodb Rock n Roll on 3000'))
     .catch(err => console.log(err))
    
