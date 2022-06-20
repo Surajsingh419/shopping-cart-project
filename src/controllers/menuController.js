@@ -74,19 +74,21 @@ const registerMenu = async function (req, res) {
         try {
     
             let Menu = await menuModel.find();
-            for(let i=0;i<Menu.length;i++){
-                console.log(Menu[i])
-              let data =  await menuModel.findOne({itemId:1});
-              if(data!==null){
-                  return  Menu.push(data);
-                  
-              }
+            for (let i = 0; i < Menu.length; i++) {
+                let menuData = await menuModel.findOne({itemId:1 }).select({ root: 1,_id:2 })
+                if (menuData.length == 0) {
+                    continue;
+                }
+                Menu[i].menuData = menuData
             }
-            res.status(200).send({ status: true, message: "Menu list", data: Menu })
-        }
-        catch (error) {
-            console.log(error)
-            res.status(500).send({ status: false, error: error.message });
+    
+            if (Menu.length == 0) {
+                return res.status(400).send({ status: false, message: "No Menu found" })
+            }
+    
+            return res.status(200).send({ status: true, Details: Menu });
+        } catch (err) {
+            return res.status(500).send({ status: false, message: err.message })
         }
     }
     module.exports = {registerMenu,getAllMenu}

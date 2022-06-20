@@ -3,16 +3,15 @@ const mongoose = require('mongoose')
 const menuSchema = new mongoose.Schema({
     itemId: {
         type: Number,
-       // required: true
-        //unique: true
+      
     },
     itemsName: {
         type: String,
-//required: true
+
     },
     url: {
-        type: String
-        //required: true
+        type: String,
+    
     },
     urlParameters: {
         type: String
